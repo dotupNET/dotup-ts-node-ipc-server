@@ -1,0 +1,49 @@
+{
+  "main": "dist/app.js",
+  "types": "dist/app.d.ts",
+  "devDependencies": {
+    "dotup-ts-git-wrapper": "^1.0.0",
+    "gulp": "^4.0.1",
+    "gulp-tslint": "^8.1.4",
+    "gulp-typescript": "^5.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-typedoc": "^2.2.2",
+    "gulp-mocha": "^6.0.0",
+    "del": "^4.1.0",
+    "cross-spawn": "^6.0.5",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "ts-node": "^8.1.0",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.4.5",
+    "tslint": "^5.16.0",
+    "tslint-microsoft-contrib": "^6.1.1",
+    "gh-pages": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotupNET/dotup-ts-node-ipc-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dotupNET/dotup-ts-node-ipc-server/issues"
+  },
+  "homepage": "https://github.com/dotupNET/dotup-ts-node-ipc-server#readme",
+  "scripts": {
+    "postpublish": "git tag -a v%npm_package_version% -m \"Release v%npm_package_version%\" && git push origin --tags",
+    "commit-release": "git commit -a -m \"Release v%npm_package_version%\" && git push && git tag -a v%npm_package_version% -m \"Release v%npm_package_version%\" && git push origin --tags",
+    "build": "tsc",
+    "test": "node node_modules/mocha/bin/mocha --require ts-node/register test/*.test.ts --reporter spec",
+    "docs": "typedoc --mode file --out docs src --exclude \"**/*+(index|.spec|.test|.e2e).ts\"",
+    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs",
+    "npm-publish": "npm publish"
+  },
+  "version": "0.0.0",
+  "name": "dotup-ts-node-ipc-server",
+  "author": {
+    "name": "Peter Ullrich",
+    "email": "dotup.software@gmail.com"
+  }
+}
