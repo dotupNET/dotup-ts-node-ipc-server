@@ -30,3 +30,7 @@ ipcServer
   .then(() => ipcServer.start())
   .catch(e => console.error(e))
   ;
+
+process.on('SIGINT', () => {
+  ipcServer.stop();
+});

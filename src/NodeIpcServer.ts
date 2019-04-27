@@ -35,4 +35,8 @@ export class NodeIpcServer {
 
   }
 
+  stop(): void {
+    this.ipcServer.stop();
+  }
+
 }
