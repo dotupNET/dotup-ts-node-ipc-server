@@ -33,10 +33,12 @@ export class NodeIpcServer {
     this.ipcServer = new IpcServer(this.channelName);
     this.ipcServer.start();
 
+    this.ipcServer.on('error', e => console.log(e));
   }
 
   stop(): void {
     this.ipcServer.stop();
+    this.ipcServer.removeAllListeners();
   }
 
 }
