@@ -39,6 +39,7 @@ const timer = setInterval(
 
 process.on('SIGINT', () => {
   ipcServer.stop();
+  clearInterval(timer);
   process.exit(0);
 });
 
@@ -48,6 +49,7 @@ process.on('uncaughtException', () => {
   } catch (error) {
     console.error(error);
   } finally {
+    clearInterval(timer);
     process.exit(1001);
   }
 });
