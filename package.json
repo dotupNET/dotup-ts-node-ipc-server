@@ -8,7 +8,7 @@
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
   "dependencies": {
-    "dotup-ts-node-ipc": "^0.2.4",
+    "dotup-ts-node-ipc": "^0.2.5",
     "log4js": "^4.1.0",
     "enquirer": "^2.3.0",
     "commander": "^2.20.0",
