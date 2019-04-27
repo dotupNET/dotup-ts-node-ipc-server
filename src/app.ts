@@ -33,8 +33,15 @@ ipcServer
 
 process.on('SIGINT', () => {
   ipcServer.stop();
+  process.exit(0);
 });
 
 process.on('uncaughtException', () => {
-  ipcServer.stop();
+  try {
+    ipcServer.stop();
+  } catch (error) {
+    console.error(error);
+  } finally {
+    process.exit(1001);
+  }
 });
