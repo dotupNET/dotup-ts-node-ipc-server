@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "dotup-ts-node-ipc-server",
   "author": {
     "name": "Peter Ullrich",
@@ -11,7 +11,8 @@
     "dotup-ts-node-ipc": "^0.2.4",
     "log4js": "^4.1.0",
     "enquirer": "^2.3.0",
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "dotenv": "^7.0.0"
   },
   "devDependencies": {
     "dotup-ts-git-wrapper": "^1.0.0",
