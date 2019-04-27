@@ -1,13 +1,21 @@
-// This is the application entry point
+#!/usr/bin/env node
+import commander from 'commander';
+import { NodeIpcServer } from './NodeIpcServer';
 
-export class App {
+const ipcServer = new NodeIpcServer();
 
-  version: string;
+let nameOrPort: string = process.env.IPC_CHANNEL;
 
-  constructor() {
-    console.log('Awesome App is running!');
-  }
+const args = commander
+  .option('-c, --channel <IpcNameOrPort>', 'IPC Channel name or port')
+  .parse(process.argv);
 
+if (args.channel !== undefined) {
+  nameOrPort = <string>args.channel;
 }
 
-const app = new App();
+ipcServer
+  .initialize(nameOrPort)
+  .then(() => ipcServer.start())
+  .catch(e => console.error(e))
+  ;

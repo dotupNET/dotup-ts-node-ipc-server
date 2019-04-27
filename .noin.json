@@ -1,0 +1,54 @@
+{
+  "production": true,
+  "git": {
+    "userName": "dotupNET",
+    "repositoryName": "dotup-ts-node-ipc-server"
+  },
+  "linux": {
+    "targetPath": "/home/pi/dotup/ipc-server",
+    "app": {
+      "User": "pi",
+      "Group": "pi",
+      "Environment": [
+        "/usr/bin:/usr/local/bin",
+        "NODE_ENV=production",
+        "IPC_CHANNEL=DOTUP-IPC-SERVER"
+      ],
+      "postCommands": [
+        "sudo chmod +x {bin}",
+        "sudo rm -f /usr/bin/dotup-ipc-server",
+        "sudo ln -s {bin} /usr/bin/dotup-ipc-server",
+        "sudo chown {app.User}:{app.Group} /usr/bin/dotup-ipc-server"
+      ]
+    },
+    "systemd": {
+      "serviceName": "dotup-ipc-server",
+      "Description": "dotup IPC Server service",
+      "After": "network.target",
+      "Restart": "always",
+      "User": "pi",
+      "Group": "pi",
+      "Environment": [
+        "PATH=/usr/bin:/usr/local/bin",
+        "NODE_ENV=production",
+        "IPC_CHANNEL=DOTUP-IPC-SERVER"
+      ],
+      "WantedBy": "multi-user.target",
+      "postCommands": [
+        "sudo chmod +x {bin}",
+        "sudo systemctl daemon-reload",
+        "sudo systemctl enable {systemd.serviceName}",
+        "sudo systemctl restart {systemd.serviceName}"
+      ]
+    }
+  },
+  "win32": {
+    "targetPath": "C:/dotup/ipc-server",
+    "app": {
+      "Environment": [
+        "NODE_ENV=production",
+        "IPC_CHANNEL=DOTUP-IPC-SERVER"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "appenders": {
+    "console":{
+      "type": "stdout"      
+    }
+  },
+  "categories": {
+    "debug": {
+      "appenders": [
+        "console"
+      ],
+      "level": "DEBUG"
+    },
+    "default": {
+      "appenders": [
+        "console"
+      ],
+      "level": "DEBUG"
+    },
+    "IPC": {
+      "appenders": [
+        "console"
+      ],
+      "level": "DEBUG"
+    }
+  }
+}

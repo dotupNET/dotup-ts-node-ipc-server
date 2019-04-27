@@ -8,10 +8,15 @@
         "NODE_ENV": "development"
       },
       "name": "Launch Program",
-      "program": "${workspaceFolder}/dist/app.js",
+      "program": "${workspaceFolder}/src/app.ts",
       "outFiles": [
         "${workspaceFolder}/dist/*.js"
       ],
+      "args": [
+        "-c", "9999"
+      ],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
       "skipFiles": [
         "<node_internals>/**/*.js"
       ]

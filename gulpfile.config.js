@@ -42,7 +42,7 @@ const GulpConfig =  {
   statics: [
     {
       sourcePath: `${Paths.sourcePath}/assets/**`,
-      targetPath: `${Paths.targetPath}`
+      targetPath: `${Paths.targetPath}/assets`
     }
   ],
 
