@@ -2,6 +2,7 @@
 import commander from 'commander';
 import { configure } from 'log4js';
 import { NodeIpcServer } from './NodeIpcServer';
+import { setInterval } from 'timers';
 
 // logging
 let prefix = 'production';
@@ -30,6 +31,11 @@ ipcServer
   .then(() => ipcServer.start())
   .catch(e => console.error(e))
   ;
+
+const timer = setInterval(
+  () => console.log(`NodeIpcServer: ${nameOrPort}`),
+  60 * 1000
+)
 
 process.on('SIGINT', () => {
   ipcServer.stop();

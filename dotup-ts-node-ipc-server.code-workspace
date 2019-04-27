@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "C:\\temp\\yo-test\\dotup-ts-node-ipc"
+		},
+		{
+			"path": "."
+		}
+	],
+  "settings": {
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+  }
+}
