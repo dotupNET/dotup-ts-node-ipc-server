@@ -11,16 +11,6 @@ export class NodeIpcServer {
 
   private ipcServer: IpcServer;
 
-  constructor() {
-    let prefix = 'production';
-
-    if (process.env.NODE_ENV !== undefined) {
-      prefix = process.env.NODE_ENV;
-    }
-
-    configure(`${__dirname}/assets/logging.${prefix}.json`);
-  }
-
   async initialize(nameOrPort: string): Promise<void> {
 
     this.channelName = nameOrPort;
