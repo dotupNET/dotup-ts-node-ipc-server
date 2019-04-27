@@ -34,3 +34,7 @@ ipcServer
 process.on('SIGINT', () => {
   ipcServer.stop();
 });
+
+process.on('uncaughtException', () => {
+  ipcServer.stop();
+});
