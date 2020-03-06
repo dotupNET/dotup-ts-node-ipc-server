@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import commander from 'commander';
-import { configure } from 'log4js';
-import { NodeIpcServer } from './NodeIpcServer';
-import { setInterval } from 'timers';
+import commander from "commander";
+import { configure } from "log4js";
+import { NodeIpcServer } from "./NodeIpcServer";
+import { setInterval } from "timers";
 
 // logging
-let prefix = 'production';
+let prefix = "production";
 
 if (process.env.NODE_ENV !== undefined) {
   prefix = process.env.NODE_ENV;
@@ -14,14 +14,15 @@ if (process.env.NODE_ENV !== undefined) {
 configure(`${__dirname}/assets/logging.${prefix}.json`);
 
 // Command line arguments
-let nameOrPort: string = process.env.IPC_CHANNEL;
 
 const args = commander
-  .option('-c, --channel <IpcNameOrPort>', 'IPC Channel name or port')
+  .option("-c, --channel <IpcNameOrPort>", "IPC Channel name or port")
   .parse(process.argv);
 
-if (args.channel !== undefined) {
-  nameOrPort = <string>args.channel;
+
+const nameOrPort = args.channel === undefined ? process.env.IPC_CHANNEL : args.channel as string;
+if (nameOrPort === undefined) {
+  throw new Error("nameOrPort === undefined");
 }
 
 // IPC Server
@@ -35,15 +36,15 @@ ipcServer
 const timer = setInterval(
   () => console.log(`NodeIpcServer: ${nameOrPort}`),
   60 * 1000
-)
+);
 
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
   ipcServer.stop();
   clearInterval(timer);
   process.exit(0);
 });
 
-process.on('uncaughtException', () => {
+process.on("uncaughtException", () => {
   try {
     ipcServer.stop();
   } catch (error) {

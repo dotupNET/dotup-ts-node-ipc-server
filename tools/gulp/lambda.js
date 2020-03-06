@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const
-  gulp = require('gulp'),
-  del = require('del'),
-  AwsLambda = require('../scripts/AwsLambda'),
-  config = require('../../gulpfile.config'),
-  path = require('path')
+  gulp = require("gulp"),
+  AwsLambda = require("../scripts/AwsLambda"),
+  config = require("../../gulpfile.config"),
+  path = require("path")
   ;
 
-const rootPath = path.join(__dirname, '..', '..');
+const rootPath = path.join(__dirname, "..", "..");
 
 // const config = new Config();
 
@@ -29,4 +29,4 @@ async function publish() {
 }
 
 module.exports.publish = publish;
-gulp.task('aws-publish', publish);
+gulp.task("aws-publish", publish);

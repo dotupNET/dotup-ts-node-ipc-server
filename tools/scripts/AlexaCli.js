@@ -29,7 +29,7 @@ class AlexaCli {
     console.log(`Package.json '${targetPath}' generated`);
   }
 
-  // const currentMode = BuildMode.dev;
+  // const currentMode = config.BuildMode.dev;
 
   installDependencies() {
     const result = execa.sync(
@@ -155,7 +155,7 @@ class AlexaCli {
 // console.log(cli.getJsonFile(defaults.packageFileName));
 
 
-// const currentMode = BuildMode.dev;
+// const currentMode = config.BuildMode.dev;
 
 
 module.exports = AlexaCli;

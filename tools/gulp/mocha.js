@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const
-  gulp = require('gulp'),
-  tsc = require('gulp-typescript'),
-  mocha = require('gulp-mocha'),
-  config = require('../../gulpfile.config')
+  gulp = require("gulp"),
+  mocha = require("gulp-mocha"),
+  config = require("../../gulpfile.config")
   ;
 
 function preBuild() {
@@ -11,15 +11,15 @@ function preBuild() {
     .pipe(
       mocha(
         {
-          reporter: 'spec',
-          require: ['ts-node/register']
+          reporter: "spec",
+          require: ["ts-node/register"]
         }
       )
     );
 }
 module.exports.preBuild = preBuild;
 
-gulp.task('test-mocha', preBuild);
+gulp.task("test-mocha", preBuild);
 
 // exports['test-mocha'] = run;
 // task('test-mocha', function () {

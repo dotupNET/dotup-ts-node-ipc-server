@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const BuildMode = require('./BuildModes');
 // const PackageGenerator = require('./PackageGenerator');
 
 class AlexaSkillPublisher {

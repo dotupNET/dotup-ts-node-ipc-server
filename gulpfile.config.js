@@ -1,48 +1,79 @@
-'use strict';
 //const skill = require('./secrets/skill.config.json');
-const BuildMode = require('./tools/gulp/gulpBuildMode');
 
-const Paths = {
-  // source
-  sourcePath: 'src',
+const GulpConfig = {
+  BuildMode: Object.freeze({
+    "production": "production",
+    "dev": "dev"
+  }),
+  ActiveComponents: {
+    "lambda": false,
+    "build": true,
+    "docs": true,
+    "mocha": false,
+    "eslint": false,
+    "watch": false,
+    "yogen": false,
+    "npm": true,
+    "statics": true,
+    "skill": false
+  },
+  Paths: {
+    // source
+    sourcePath: "src",
 
-  // test
-  testPath: 'test',
+    // test
+    testPath: "src",
 
-  // target
-  targetPath: 'dist',
+    // target
+    targetPath: "dist",
 
-  // docs
-  docsPath: 'docs'
-}
+    // docs
+    docsPath: "docs"
+  },
+  buildMode: null,
 
-const GulpConfig =  {
+  // GulpConfig = {
 
-  buildMode: BuildMode.dev,
+  // buildMode: GulpConfig.buildMode,
+
+  tsConfigFile: "",
 
   // Root path
-  rootPath: __dirname,
+  rootPath: __dirname
+};
 
+Object.assign(GulpConfig, {
   // source
-  sourcePath: Paths.sourcePath,
-  tsSourceFiles: Paths.sourcePath + '/**/*.ts',
+  sourcePath: GulpConfig.Paths.sourcePath,
+
+  tsSourceFiles: GulpConfig.Paths.sourcePath + "/**/*.ts",
 
   // test
-  testPath: Paths.testPath,
-  testFiles: `${Paths.testPath}/**/*.ts`,
+  testPath: GulpConfig.Paths.testPath,
+  testFiles: `${GulpConfig.Paths.testPath}/**/*.ts`,
 
   // target
-  targetPath: Paths.targetPath,
+  targetPath: GulpConfig.Paths.targetPath,
 
   // docs
-  docsPath: Paths.docsPath,
-  docsFiles: Paths.docsPath + '/**/*',
+  docsPath: GulpConfig.Paths.docsPath,
+
+  docsFiles: GulpConfig.Paths.docsPath + "/**/*",
+  setBuildMode: (value) => {
+    GulpConfig.buildMode = value;
+    if (value === GulpConfig.BuildMode.dev) {
+      GulpConfig.tsConfigFile = "tsconfig.json";
+    } else {
+      GulpConfig.tsConfigFile = "tsconfig.build.json";
+    }
+    return GulpConfig.buildMode;
+  },
 
   // Static files
   statics: [
     {
-      sourcePath: `${Paths.sourcePath}/assets/**`,
-      targetPath: `${Paths.targetPath}/assets`
+      sourcePath: `${GulpConfig.Paths.sourcePath}/assets/**`,
+      targetPath: `${GulpConfig.Paths.targetPath}/assets`
     }
   ],
 
@@ -55,7 +86,7 @@ const GulpConfig =  {
     //   name: 'module-name2',
     //   path: '../'
     // }
-  ]
+  ],
   // lambda: [
   //   {
   //     sourcePath: `${Paths.targetPath}/skill`,
@@ -66,6 +97,7 @@ const GulpConfig =  {
   //     }
   //   }
   // ]
-}
+});
 
+// const config = new GulpConfig();
 module.exports = GulpConfig;
