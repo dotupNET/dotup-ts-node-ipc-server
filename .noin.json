@@ -1,6 +1,6 @@
 {
   "production": true,
-  "BuildScript": "npm run build",
+  "BuildScript": "npm run build-noin",
   "git": {
     "userName": "dotupNET",
     "repositoryName": "dotup-ts-node-ipc-server"
