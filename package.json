@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "@dotup/node-ipc-server",
   "scripts": {
     "build": "npm run build-ts",
@@ -42,7 +42,7 @@
     "commit-release": "git commit -a -m \"Release v%npm_package_version%\" && git push && git tag -a v%npm_package_version% -m \"Release v%npm_package_version%\" && git push origin --tags"
   },
   "dependencies": {
-    "@dotup/node-ipc": "^1.0.0",
+    "@dotup/node-ipc": "^1.0.1",
     "dotenv": "^7.0.0",
     "log4js": "^6.1.2"
   },
