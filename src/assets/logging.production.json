@@ -5,7 +5,7 @@
     },
     "file": {
       "type": "file",
-      "filename": "log/dotup.ipc.log",
+      "filename": "/var/log/dotup/dotup.ipc.log",
       "maxLogSize": 10485760,
       "numBackups": 3
     }
