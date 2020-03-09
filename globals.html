@@ -76,7 +76,6 @@
 						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable"><a href="globals.html#args" class="tsd-kind-icon">args</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#ipcserver" class="tsd-kind-icon">ipc<wbr>Server</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#logger" class="tsd-kind-icon">logger</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#nameorport" class="tsd-kind-icon">name<wbr>OrPort</a></li>
@@ -90,22 +89,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
-					<a name="args" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> args</h3>
-					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol"> = commander.option(&quot;-c, --channel &lt;IpcNameOrPort&gt;&quot;, &quot;IPC Channel name or port&quot;).parse(process.argv)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/app.ts#L18">app.ts:18</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="ipcserver" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> ipc<wbr>Server</h3>
 					<div class="tsd-signature tsd-kind-icon">ipc<wbr>Server<span class="tsd-signature-symbol">:</span> <a href="classes/nodeipcserver.html" class="tsd-signature-type">NodeIpcServer</a><span class="tsd-signature-symbol"> = new NodeIpcServer()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/app.ts#L29">app.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/47d3f19/src/app.ts#L29">app.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -115,17 +104,17 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = getLogger(&quot;IPC&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/NodeIpcServer.ts#L6">NodeIpcServer.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/47d3f19/src/NodeIpcServer.ts#L4">NodeIpcServer.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="nameorport" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> name<wbr>OrPort</h3>
-					<div class="tsd-signature tsd-kind-icon">name<wbr>OrPort<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = args.channel &#x3D;&#x3D;&#x3D; undefined ? process.env.IPC_CHANNEL : args.channel as string</span></div>
+					<div class="tsd-signature tsd-kind-icon">name<wbr>OrPort<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = process.env.IPC_CHANNEL || &quot;DOTUP-IPC-SERVER&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/app.ts#L23">app.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/47d3f19/src/app.ts#L26">app.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,7 +124,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;production&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/app.ts#L8">app.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/47d3f19/src/app.ts#L7">app.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -145,7 +134,7 @@
 					<div class="tsd-signature tsd-kind-icon">timer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Timeout</span><span class="tsd-signature-symbol"> = setInterval(() &#x3D;&gt; console.log(&#x60;NodeIpcServer: ${nameOrPort}&#x60;),60 * 1000)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/843fd46/src/app.ts#L36">app.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/dotupNET/dotup-ts-node-ipc-server/blob/47d3f19/src/app.ts#L36">app.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -163,9 +152,6 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
 						<a href="classes/nodeipcserver.html" class="tsd-kind-icon">Node<wbr>Ipc<wbr>Server</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#args" class="tsd-kind-icon">args</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#ipcserver" class="tsd-kind-icon">ipc<wbr>Server</a>
