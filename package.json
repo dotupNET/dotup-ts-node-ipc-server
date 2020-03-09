@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "@dotup/node-ipc-server",
   "scripts": {
     "build": "npm run build-ts",
@@ -51,7 +51,7 @@
     "@types/chai": "^4.2.10",
     "@types/eslint": "^6.1.8",
     "@types/mocha": "^7.0.2",
-    "@types/node": "13.7.7",
+    "@types/node": "13.9.0",
     "@types/shelljs": "^0.8.6",
     "@types/uuid": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
