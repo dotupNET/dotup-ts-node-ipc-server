@@ -41,7 +41,7 @@
     "commit-release": "git commit -a -m \"Release v%npm_package_version%\" && git push && git tag -a v%npm_package_version% -m \"Release v%npm_package_version%\" && git push origin --tags"
   },
   "dependencies": {
-    "@dotup/node-ipc": "workspace:^1.0.0",
+    "@dotup/node-ipc": "^1.0.0",
     "commander": "^2.20.0",
     "dotenv": "^7.0.0",
     "enquirer": "^2.3.0",
