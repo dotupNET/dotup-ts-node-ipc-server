@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import commander from "commander";
 import { configure } from "log4js";
 import { NodeIpcServer } from "./NodeIpcServer";
 import { setInterval } from "timers";
@@ -15,15 +14,16 @@ configure(`${__dirname}/assets/logging.${prefix}.json`);
 
 // Command line arguments
 
-const args = commander
-  .option("-c, --channel <IpcNameOrPort>", "IPC Channel name or port")
-  .parse(process.argv);
+// const args = commander
+//   .option("-c, --channel <IpcNameOrPort>", "IPC Channel name or port")
+//   .parse(process.argv);
 
 
-const nameOrPort = args.channel === undefined ? process.env.IPC_CHANNEL : args.channel as string;
-if (nameOrPort === undefined) {
-  throw new Error("nameOrPort === undefined");
-}
+// const nameOrPort = args.channel === undefined ? process.env.IPC_CHANNEL : args.channel as string;
+// if (nameOrPort === undefined) {
+//   throw new Error("nameOrPort === undefined");
+// }
+const nameOrPort = process.env.IPC_CHANNEL || "DOTUP-IPC-SERVER";
 
 // IPC Server
 const ipcServer = new NodeIpcServer();

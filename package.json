@@ -43,9 +43,7 @@
   },
   "dependencies": {
     "@dotup/node-ipc": "^1.0.0",
-    "commander": "^2.20.0",
     "dotenv": "^7.0.0",
-    "enquirer": "^2.3.0",
     "log4js": "^6.1.2"
   },
   "devDependencies": {
