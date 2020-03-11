@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "name": "@dotup/node-ipc-server",
   "scripts": {
     "build": "npm run build-ts",
