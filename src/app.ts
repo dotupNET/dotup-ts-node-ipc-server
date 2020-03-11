@@ -1,56 +1,49 @@
 #!/usr/bin/env node
-import { configure } from "log4js";
+import { configure, Log4js } from "log4js";
 import { NodeIpcServer } from "./NodeIpcServer";
 import { setInterval } from "timers";
 
-// logging
+const nameOrPort = process.env.IPC_CHANNEL || "DOTUP-IPC-SERVER";
+
+// vars
 let prefix = "production";
+let logger: Log4js;
 
 if (process.env.NODE_ENV !== undefined) {
   prefix = process.env.NODE_ENV;
 }
 
-configure(`${__dirname}/assets/logging.${prefix}.json`);
 
-// Command line arguments
-
-// const args = commander
-//   .option("-c, --channel <IpcNameOrPort>", "IPC Channel name or port")
-//   .parse(process.argv);
-
-
-// const nameOrPort = args.channel === undefined ? process.env.IPC_CHANNEL : args.channel as string;
-// if (nameOrPort === undefined) {
-//   throw new Error("nameOrPort === undefined");
-// }
-const nameOrPort = process.env.IPC_CHANNEL || "DOTUP-IPC-SERVER";
-
-// IPC Server
-const ipcServer = new NodeIpcServer();
-ipcServer
-  .initialize(nameOrPort)
-  .then(() => ipcServer.start())
-  .catch(e => console.error(e))
-  ;
-
-const timer = setInterval(
-  () => console.log(`NodeIpcServer: ${nameOrPort}`),
-  60 * 1000
-);
-
-process.on("SIGINT", () => {
-  ipcServer.stop();
-  clearInterval(timer);
-  process.exit(0);
-});
-
-process.on("uncaughtException", () => {
+const initialize = async () => {
+  // IPC Server
   try {
-    ipcServer.stop();
+    const ipcServer = new NodeIpcServer();
+    await ipcServer.initialize(nameOrPort);
+    ipcServer.start();
+
+    const timer = setInterval(
+      () => console.log(`NodeIpcServer: ${nameOrPort}`),
+      60 * 1000
+    );
+
+    const exitApp = () => {
+      ipcServer?.stop();
+      logger?.shutdown(e => console.log(e));
+      clearInterval(timer);
+      process.off("SIGINT", exitApp);
+      process.off("SIGTERM", exitApp);
+      process.off("uncaughtException", exitApp);
+      process.exit(0);
+    };
+
+    process.on("SIGINT", exitApp);
+    process.on("SIGTERM", exitApp);
+    process.on("uncaughtException", exitApp);
+
   } catch (error) {
     console.error(error);
-  } finally {
-    clearInterval(timer);
-    process.exit(1001);
   }
-});
+};
+
+logger = configure(`${__dirname}/assets/logging.${prefix}.json`);
+initialize();
